@@ -14,16 +14,28 @@ configurations {
     }
 }
 
+jar {
+    enabled = false;
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.projectlombok:lombok:1.18.18'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //db
+    implementation 'mysql:mysql-connector-java'
+
+    //swagger
+    implementation "io.springfox:springfox-boot-starter:3.0.0"
 }
 
 test {
