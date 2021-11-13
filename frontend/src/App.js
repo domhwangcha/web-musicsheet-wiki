@@ -1,25 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
-import './App.css';
-function App () {
-    const [message, setMessage] = useState("");
-    useEffect(() => {
-        fetch('/api/hello')
-            .then(response => response.text())
-            .then(message => {
-                setMessage(message);
-            });
-    },[])
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Header from './components/Header'
+import Home from './components/Home';
+import Footer from './components/Footer'
+import Result from './components/Result'
+
+function App() {
     return (
         <div className="App">
-        <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo"/>
-        <h1 className="App-title">{message}</h1>
-        </header>
-        <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-    </p>
-    </div>
-)
+            <BrowserRouter>
+                <Header/>
+                <Routes>
+                    <Route exact path={"/"} element={<Home/>}/>
+                    <Route exact path={"/result/:sid"} element={<Result/>}/>
+                </Routes>
+                <Footer/>
+            </BrowserRouter>
+        </div>
+    )
 }
+
 export default App;
